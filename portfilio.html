@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Hassene Othmani | Full Stack Data Science Engineer</title>
+  <!-- Google Fonts & simple reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* header / navigation */
+    header {
+      background: #ffffff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(2px);
+      background: rgba(255,255,255,0.96);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.6rem;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1e293b;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #2a5298;
+    }
+
+    .btn-resume {
+      background: #0f172a;
+      color: white !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+    }
+
+    .btn-resume:hover {
+      background: #1e3c72;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .contact-form label {
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      display: block;
+      color: #1e293b;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border-radius: 18px;
+      border: 1px solid #cbd5e1;
+      background: white;
+      color: #0f172a;
+      font-size: 0.95rem;
+      resize: vertical;
+    }
+
+    .contact-form textarea {
+      min-height: 140px;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #2a5298;
+      box-shadow: 0 0 0 3px rgba(74, 112, 253, 0.12);
+    }
+
+    .form-submit {
+      background: #0f172a;
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 0.95rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: background 0.2s ease;
+      width: fit-content;
+      margin-top: 0.5rem;
+    }
+
+    .form-submit:hover {
+      background: #2a5298;
+    }
+
+    .form-success {
+      background: #d1fae5;
+      color: #065f46;
+      border: 1px solid #34d399;
+      border-radius: 18px;
+      padding: 1rem 1.2rem;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .contact-card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* sections */
+    section {
+      padding: 5rem 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .hero {
+      padding: 4rem 0 5rem 0;
+      background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
+    }
+
+    .hero-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .hero-text {
+      flex: 1.4;
+    }
+
+    .hero-badge {
+      background: #e0e7ff;
+      color: #1e3c72;
+      padding: 0.25rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #0f172a, #2d4a8c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #334155;
+      margin-bottom: 1.8rem;
+      max-width: 90%;
+    }
+
+    .contact-info-hero {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .contact-info-hero span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: #1e293b;
+    }
+
+    .hero-image {
+      flex: 1;
+      text-align: center;
+      background: #eef2ff;
+      border-radius: 60% 40% 50% 50%;
+      padding: 1rem;
+    }
+
+    .avatar-placeholder {
+      font-size: 7rem;
+      color: #1e3c72;
+    }
+
+    /* section titles */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60%;
+      height: 4px;
+      background: #2a5298;
+      border-radius: 2px;
+    }
+
+    /* expertise chips */
+    .expertise-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .chip {
+      background: white;
+      border: 1px solid #cbd5e1;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+
+    .chip:hover {
+      border-color: #2a5298;
+      background: #f0f4ff;
+    }
+
+    /* experience & project cards */
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.8rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #eef2ff;
+      margin-bottom: 2rem;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-sub {
+      color: #2a5298;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0 0.8rem;
+    }
+    .tech-tag {
+      background: #eef2ff;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #1e3c72;
+    }
+
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+    }
+
+    @media (max-width: 800px) {
+      .two-columns {
+        grid-template-columns: 1fr;
+      }
+      .hero-content {
+        flex-direction: column;
+      }
+      .hero-text p {
+        max-width: 100%;
+      }
+      nav {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .nav-links {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    /* footer */
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .social-icons a {
+      color: white;
+      margin: 0 0.5rem;
+      font-size: 1.4rem;
+      transition: 0.2s;
+    }
+    .social-icons a:hover {
+      color: #94a3b8;
+    }
+
+    /* dark mode toggle simple */
+    .dark-mode-toggle {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #1e293b;
+      margin-left: 1rem;
+    }
+
+    body.dark {
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+    body.dark .card, body.dark header, body.dark .chip {
+      background: #1e293b;
+      border-color: #334155;
+      color: #e2e8f0;
+    }
+    body.dark .hero {
+      background: #0f172a;
+    }
+    body.dark .chip {
+      background: #1e2a3a;
+    }
+    body.dark .btn-resume {
+      background: #3b82f6;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Hassene Othmani</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#expertise">Skills</a>
+      <a href="#contact" class="btn-resume">Contact</a>
+      <button class="dark-mode-toggle" id="darkModeBtn" aria-label="Dark mode"><i class="fas fa-moon"></i></button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <span class="hero-badge"><i class="fas fa-graduation-cap"></i> Full Stack Data Science Eng. Student</span>
+        <h1>Building scalable AI & web solutions</h1>
+        <p>Second-year Full Stack Data Science Engineering student with a passion for machine learning, backend systems, and data-driven innovation.</p>
+        <div class="contact-info-hero">
+          <span><i class="fas fa-phone-alt"></i> +216 52 953 058</span>
+          <span><i class="fas fa-envelope"></i> hassene.othmani5400@gmail.com</span>
+          <span><i class="fas fa-map-marker-alt"></i> Tunis, Tunisia</span>
+        </div>
+        <div style="display: flex; gap: 1rem;">
+          <a href="#contact" style="background: #0f172a; color: white; padding: 0.7rem 1.8rem; border-radius: 40px; text-decoration: none; font-weight: 600;">Get in touch</a>
+          <a href="hassene othmani.pdf" download style="border: 1px solid #0f172a; padding: 0.7rem 1.8rem; border-radius: 40px; text-decoration: none; font-weight: 500;">Download CV</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="avatar-placeholder"><i class="fas fa-chart-line"></i> <i class="fas fa-code"></i></div>
+        <p style="margin-top: 0.5rem; font-weight: 500;">ML · Spring Boot · Angular</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience section -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Professional Experience</h2>
+      <div class="card">
+        <div class="card-title">Web Developer Internship</div>
+        <div class="card-sub"><i class="far fa-calendar-alt"></i> July 2024 – Present · Transit Web Solutions</div>
+        <ul style="margin-left: 1.2rem; color: #334155; line-height: 1.6;">
+          <li>Built front-end platform to manage sales of articles with Oracle DB integration & testing.</li>
+          <li>Developed backend code for Spring Boot framework, collaborated with senior devs to create new features.</li>
+          <li>Integrated a sales prediction model directly into the web application for smarter inventory.</li>
+          <li>Used Docker containers to ensure compatibility across platforms and simplified routing.</li>
+          <li>Actively participated in testing, deployment, and agile ceremonies.</li>
+        </ul>
+        <div class="project-tech" style="margin-top: 1rem;">
+          <span class="tech-tag">Spring Boot</span>
+          <span class="tech-tag">Angular</span>
+          <span class="tech-tag">Oracle DB</span>
+          <span class="tech-tag">Docker</span>
+          <span class="tech-tag">ML Integration</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects + Freelance (Relevant Projects) -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Relevant Projects</h2>
+      <div class="two-columns">
+        <!-- Freelance project -->
+        <div class="card">
+          <div class="card-title">Freelance Web Developer</div>
+          <div class="card-sub"><i class="far fa-calendar-alt"></i> July 2025 – Oct 2025</div>
+          <p>Built a high-performing website to increase traffic, sales, and subscribers. Developed email marketing campaigns for brand exposure and product promotion.</p>
+          <p><strong>Data analysis & prediction model</strong> – Analyzed gold price data, determined most relevant inputs, and improved prediction precision using XGBoost, Linear Regression, and LSTM.</p>
+          <div class="project-tech">
+            <span class="tech-tag">XGBoost</span>
+            <span class="tech-tag">LSTM</span>
+            <span class="tech-tag">Scikit-learn</span>
+            <span class="tech-tag">Email Marketing</span>
+            <span class="tech-tag">SEO</span>
+          </div>
+        </div>
+        <!-- Additional data science project (prediction) -->
+        <div class="card">
+          <div class="card-title">Gold Price Forecasting Engine</div>
+          <div class="card-sub"><i class="fas fa-chart-line"></i> Predictive Modeling</div>
+          <p>Conducted extensive analysis on multiple financial data inputs to identify most relevant features. Enhanced forecasting accuracy by experimenting with XGBoost, Linear Regression, and LSTM networks. Achieved robust precision improvements and deployed insights via interactive dashboard.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Pandas</span>
+            <span class="tech-tag">TensorFlow</span>
+            <span class="tech-tag">XGBoost</span>
+            <span class="tech-tag">Flask</span>
+          </div>
+        </div>
+        <!-- Sales prediction web app (from internship) -->
+        <div class="card">
+          <div class="card-title">Sales Prediction Web App</div>
+          <div class="card-sub"><i class="fas fa-cart-shopping"></i> Spring Boot + ML</div>
+          <p>Integrated machine learning model within a full-stack inventory management platform. Used Docker for environment consistency, built REST APIs with Spring Boot, and Angular front-end. The model predicts product demand to optimize sales strategy.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Spring Boot</span>
+            <span class="tech-tag">Angular</span>
+            <span class="tech-tag">Scikit-learn</span>
+            <span class="tech-tag">Docker</span>
+            <span class="tech-tag">JPA/Hibernate</span>
+          </div>
+        </div>
+        <!-- Agile leadership & TDD -->
+        <div class="card">
+          <div class="card-title">Agile Software Development Lead</div>
+          <div class="card-sub"><i class="fas fa-users"></i> Scrum Master role</div>
+          <p>Led cross-functional team in academic environment practicing test-driven development (TDD) and agile ceremonies. Managed source control (Git) and code reviews. Increased delivery efficiency by 25% through iterative planning.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Agile/Scrum</span>
+            <span class="tech-tag">Jira</span>
+            <span class="tech-tag">Git/GitHub</span>
+            <span class="tech-tag">TDD</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas of Expertise & Skills -->
+  <section id="expertise">
+    <div class="container">
+      <h2 class="section-title">Technical Expertise & Tools</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between;">
+        <div style="flex: 1; min-width: 200px;">
+          <h3>Languages & Frameworks</h3>
+          <div class="expertise-grid">
+            <span class="chip">Python</span><span class="chip">Java</span><span class="chip">C/C++</span>
+            <span class="chip">JavaScript</span><span class="chip">Spring Boot</span><span class="chip">Angular</span>
+            <span class="chip">Node.js</span><span class="chip">HTML5/CSS3</span>
+          </div>
+        </div>
+        <div style="flex: 1; min-width: 200px;">
+          <h3>Data Science & ML</h3>
+          <div class="expertise-grid">
+            <span class="chip">Scikit-learn</span><span class="chip">XGBoost</span><span class="chip">LSTM</span>
+            <span class="chip">Pandas/NumPy</span><span class="chip">TensorFlow</span><span class="chip">Regression Analysis</span>
+          </div>
+        </div>
+        <div style="flex: 1; min-width: 200px;">
+          <h3>DevOps & Tools</h3>
+          <div class="expertise-grid">
+            <span class="chip">Docker</span><span class="chip">Git/GitHub</span><span class="chip">Agile/Scrum</span>
+            <span class="chip">TDD</span><span class="chip">Oracle DB</span><span class="chip">REST APIs</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 2rem;">
+        <h3>Core Competencies</h3>
+        <div class="expertise-grid">
+          <span class="chip">Front-end & Back-end Development</span>
+          <span class="chip">Agile Leadership / Scrum Master</span>
+          <span class="chip">Machine Learning Integration</span>
+          <span class="chip">Test Driven Development</span>
+          <span class="chip">Scalable Application Design</span>
+          <span class="chip">Data Analysis & Visualization</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education & Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="two-columns">
+        <div>
+          <h2 class="section-title">Education</h2>
+          <div class="card" style="margin-bottom: 0;">
+            <div class="card-title">Higher Institute of Engineering of Tunisia</div>
+            <div class="card-sub"><i class="fas fa-calendar-alt"></i> 2024 – 2027</div>
+            <p>Full Stack Data Science Engineering (B.Eng) — Second year student. Coursework: Advanced Machine Learning, Big Data Analytics, Cloud Computing, Software Architecture.</p>
+            <p><i class="fas fa-trophy"></i> Academic excellence & project-based learning in AI-driven web platforms.</p>
+          </div>
+        </div>
+        <div>
+          <h2 class="section-title">Get in touch</h2>
+          <div class="card contact-card-grid">
+            <div>
+              <p><i class="fas fa-phone-alt"></i> <strong>Phone:</strong> +216 52 953 058</p>
+              <p><i class="fas fa-envelope"></i> <strong>Email:</strong> hassene.othmani5400@gmail.com</p>
+              <p><i class="fab fa-linkedin"></i> <strong>LinkedIn:</strong> https://www.linkedin.com/in/hassene-othmani-2a71a6323/</p>
+              <p><i class="fab fa-github"></i> <strong>GitHub:</strong> https://github.com/hassene22</p>
+              <hr style="margin: 1rem 0; border-color: #e2e8f0;">
+              <p style="font-size: 0.9rem;">Open to internship opportunities, full-stack / data science collaborations. Let's build impactful solutions.</p>
+            </div>
+            <form name="contact" method="POST" action="/?success=true" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+              <input type="hidden" name="form-name" value="contact">
+              <input type="hidden" name="bot-field" aria-hidden="true">
+
+              <label for="contactName">Name</label>
+              <input id="contactName" name="name" type="text" placeholder="Your name" required>
+
+              <label for="contactEmail">Email</label>
+              <input id="contactEmail" name="email" type="email" placeholder="your@email.com" required>
+
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" name="message" placeholder="Write your message here..." required></textarea>
+
+              <button type="submit" class="form-submit">Send Message</button>
+              <p class="form-success" id="contactSuccess">Thank you! Your message has been sent. I will reply shortly.</p>
+            </form>
+            <div class="social-icons" style="margin-top: 1.2rem;">
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 Hassene Othmani — Full Stack Data Science Engineering Student. Built with HTML/CSS/JS.</p>
+  <div class="social-icons" style="margin-top: 1rem;">
+    <i class="fab fa-python"></i> <i class="fab fa-java"></i> <i class="fab fa-js"></i> <i class="fas fa-brain"></i>
+  </div>
+</footer>
+
+<script>
+  // Dark mode toggle functionality
+  const darkBtn = document.getElementById('darkModeBtn');
+  darkBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    const icon = darkBtn.querySelector('i');
+    if (document.body.classList.contains('dark')) {
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+    } else {
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-moon');
+    }
+  });
+
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === "#" || href === "") return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+
+  const contactSuccess = document.getElementById('contactSuccess');
+  const queryParams = new URLSearchParams(window.location.search);
+  if (queryParams.get('success') === 'true' && contactSuccess) {
+    contactSuccess.style.display = 'block';
+  }
+
+  // Optional: interactive console greeting
+  console.log("Hassene Othmani Portfolio — Data Science & Full Stack Engineering");
+</script>
+</body>
+</html>
