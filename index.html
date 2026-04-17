@@ -234,6 +234,15 @@
       padding: 1rem;
     }
 
+    .profile-photo {
+      width: 100%;
+      max-width: 360px;
+      border-radius: 36px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
+      object-fit: cover;
+      display: inline-block;
+    }
+
     .avatar-placeholder {
       font-size: 7rem;
       color: #1e3c72;
@@ -439,7 +448,7 @@
         </div>
       </div>
       <div class="hero-image">
-        <div class="avatar-placeholder"><i class="fas fa-chart-line"></i> <i class="fas fa-code"></i></div>
+        <img src="profile.jpg" alt="Hassene Othmani profile picture" class="profile-photo">
         <p style="margin-top: 0.5rem; font-weight: 500;">ML · Spring Boot · Angular</p>
       </div>
     </div>
@@ -605,7 +614,8 @@
               <input id="contactName" name="name" type="text" placeholder="Your name" required>
 
               <label for="contactEmail">Email</label>
-              <input id="contactEmail" name="email" type="email" placeholder="your@email.com" required>
+              <input id="contactEmail" name="reply-to" type="email" placeholder="your@email.com" required autocomplete="email">
+              <input type="hidden" name="subject" value="New message from portfolio contact form">
 
               <label for="contactMessage">Message</label>
               <textarea id="contactMessage" name="message" placeholder="Write your message here..." required></textarea>
