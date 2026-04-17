@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Hassene Othmani | Full Stack Data Science Engineer</title>
+  <title>Hassene Othmani | Full Stack Data Science Engineer – Contact Form Setup</title>
   <!-- Google Fonts & simple reset -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <!-- Font Awesome 6 (free icons) -->
@@ -147,6 +147,16 @@
       background: #d1fae5;
       color: #065f46;
       border: 1px solid #34d399;
+      border-radius: 18px;
+      padding: 1rem 1.2rem;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .form-error {
+      background: #fee2e2;
+      color: #b91c1c;
+      border: 1px solid #f87171;
       border-radius: 18px;
       padding: 1rem 1.2rem;
       margin-top: 1rem;
@@ -383,7 +393,7 @@
       color: #94a3b8;
     }
 
-    /* dark mode toggle simple */
+    /* dark mode toggle */
     .dark-mode-toggle {
       background: none;
       border: none;
@@ -410,6 +420,15 @@
     }
     body.dark .btn-resume {
       background: #3b82f6;
+    }
+    body.dark .contact-form label {
+      color: #e2e8f0;
+    }
+    body.dark .contact-form input,
+    body.dark .contact-form textarea {
+      background: #1e293b;
+      border-color: #475569;
+      color: #f1f5f9;
     }
   </style>
 </head>
@@ -448,7 +467,7 @@
         </div>
       </div>
       <div class="hero-image">
-        <img src="profile.jpg" alt="Hassene Othmani profile picture" class="profile-photo">
+        <img src="profile.jpg" alt="Hassene Othmani profile picture" class="profile-photo" onerror="this.src='https://placehold.co/360x360?text=Hassene'">
         <p style="margin-top: 0.5rem; font-weight: 500;">ML · Spring Boot · Angular</p>
       </div>
     </div>
@@ -479,12 +498,11 @@
     </div>
   </section>
 
-  <!-- Projects + Freelance (Relevant Projects) -->
+  <!-- Projects + Freelance -->
   <section id="projects">
     <div class="container">
       <h2 class="section-title">Relevant Projects</h2>
       <div class="two-columns">
-        <!-- Freelance project -->
         <div class="card">
           <div class="card-title">Freelance Web Developer</div>
           <div class="card-sub"><i class="far fa-calendar-alt"></i> July 2025 – Oct 2025</div>
@@ -498,7 +516,6 @@
             <span class="tech-tag">SEO</span>
           </div>
         </div>
-        <!-- Additional data science project (prediction) -->
         <div class="card">
           <div class="card-title">Gold Price Forecasting Engine</div>
           <div class="card-sub"><i class="fas fa-chart-line"></i> Predictive Modeling</div>
@@ -511,7 +528,6 @@
             <span class="tech-tag">Flask</span>
           </div>
         </div>
-        <!-- Sales prediction web app (from internship) -->
         <div class="card">
           <div class="card-title">Sales Prediction Web App</div>
           <div class="card-sub"><i class="fas fa-cart-shopping"></i> Spring Boot + ML</div>
@@ -524,7 +540,6 @@
             <span class="tech-tag">JPA/Hibernate</span>
           </div>
         </div>
-        <!-- Agile leadership & TDD -->
         <div class="card">
           <div class="card-title">Agile Software Development Lead</div>
           <div class="card-sub"><i class="fas fa-users"></i> Scrum Master role</div>
@@ -540,7 +555,7 @@
     </div>
   </section>
 
-  <!-- Areas of Expertise & Skills -->
+  <!-- Technical Expertise & Tools -->
   <section id="expertise">
     <div class="container">
       <h2 class="section-title">Technical Expertise & Tools</h2>
@@ -582,7 +597,7 @@
     </div>
   </section>
 
-  <!-- Education & Contact -->
+  <!-- Education & Contact (with fully functional Netlify Forms + Email Delivery) -->
   <section id="contact">
     <div class="container">
       <div class="two-columns">
@@ -601,32 +616,46 @@
             <div>
               <p><i class="fas fa-phone-alt"></i> <strong>Phone:</strong> +216 52 953 058</p>
               <p><i class="fas fa-envelope"></i> <strong>Email:</strong> hassene.othmani5400@gmail.com</p>
-              <p><i class="fab fa-linkedin"></i> <strong>LinkedIn:</strong> https://www.linkedin.com/in/hassene-othmani-2a71a6323/</p>
-              <p><i class="fab fa-github"></i> <strong>GitHub:</strong> https://github.com/hassene22</p>
+              <p><i class="fab fa-linkedin"></i> <strong>LinkedIn:</strong> linkedin.com/in/hassene-othmani-2a71a6323/</p>
+              <p><i class="fab fa-github"></i> <strong>GitHub:</strong> github.com/hassene22</p>
               <hr style="margin: 1rem 0; border-color: #e2e8f0;">
-              <p style="font-size: 0.9rem;">Open to internship opportunities, full-stack / data science collaborations. Let's build impactful solutions.</p>
+              <p style="font-size: 0.9rem;">Open to internship opportunities, full-stack / data science collaborations. Fill out the form and I’ll receive your message instantly via email.</p>
             </div>
-            <form name="contact" method="POST" action="/?success=true" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
-              <input type="hidden" name="form-name" value="contact">
-              <input type="hidden" name="bot-field" aria-hidden="true">
-
-              <label for="contactName">Name</label>
+            <!-- NETLIFY FORM CONFIGURATION: 
+                 This form will deliver submissions directly to your email inbox.
+                 Step-by-step guide:
+                 1. Deploy this site on Netlify (drag & drop folder or connect Git repo).
+                 2. Netlify automatically detects the `netlify` attribute and activates Forms.
+                 3. Go to Netlify Dashboard → Forms → "Contact Form" → "Settings".
+                 4. Add "Email notifications" → enter your email (hassene.othmani5400@gmail.com).
+                 5. That's it! Each submission will be sent to your email with full content.
+            -->
+            <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/" class="contact-form" id="netlifyContactForm">
+              <input type="hidden" name="form-name" value="contact" />
+              <div hidden aria-hidden="true">
+                <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+              </div>
+              
+              <label for="contactName">Full Name *</label>
               <input id="contactName" name="name" type="text" placeholder="Your name" required>
 
-              <label for="contactEmail">Email</label>
-              <input id="contactEmail" name="reply-to" type="email" placeholder="your@email.com" required autocomplete="email">
-              <input type="hidden" name="subject" value="New message from portfolio contact form">
+              <label for="contactEmail">Email Address *</label>
+              <input id="contactEmail" name="email" type="email" placeholder="your@email.com" required autocomplete="email">
 
-              <label for="contactMessage">Message</label>
+              <label for="contactSubject">Subject (optional)</label>
+              <input id="contactSubject" name="subject" type="text" placeholder="e.g., Collaboration / Job inquiry">
+
+              <label for="contactMessage">Message *</label>
               <textarea id="contactMessage" name="message" placeholder="Write your message here..." required></textarea>
 
-              <button type="submit" class="form-submit">Send Message</button>
-              <p class="form-success" id="contactSuccess">Thank you! Your message has been sent. I will reply shortly.</p>
+              <button type="submit" class="form-submit">Send Message <i class="fas fa-paper-plane"></i></button>
+              <div id="successMsg" class="form-success"></div>
+              <div id="errorMsg" class="form-error"></div>
             </form>
             <div class="social-icons" style="margin-top: 1.2rem;">
-              <a href="#"><i class="fab fa-github"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="https://github.com/hassene22" target="_blank"><i class="fab fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/hassene-othmani-2a71a6323/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+              <a href="mailto:hassene.othmani5400@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
           </div>
         </div>
@@ -636,7 +665,7 @@
 </main>
 
 <footer>
-  <p>© 2025 Hassene Othmani — Full Stack Data Science Engineering Student. Built with HTML/CSS/JS.</p>
+  <p>© 2025 Hassene Othmani — Full Stack Data Science Engineering Student. Built with HTML/CSS/JS + Netlify Forms (email delivery ready).</p>
   <div class="social-icons" style="margin-top: 1rem;">
     <i class="fab fa-python"></i> <i class="fab fa-java"></i> <i class="fab fa-js"></i> <i class="fas fa-brain"></i>
   </div>
@@ -670,15 +699,62 @@
     });
   });
 
+  // Handle Netlify form submission via AJAX for better UX (without page refresh)
+  const contactForm = document.getElementById('netlifyContactForm');
+  const successDiv = document.getElementById('successMsg');
+  const errorDiv = document.getElementById('errorMsg');
 
-  const contactSuccess = document.getElementById('contactSuccess');
-  const queryParams = new URLSearchParams(window.location.search);
-  if (queryParams.get('success') === 'true' && contactSuccess) {
-    contactSuccess.style.display = 'block';
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Hide previous messages
+      successDiv.style.display = 'none';
+      errorDiv.style.display = 'none';
+      
+      const formData = new FormData(contactForm);
+      
+      try {
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        });
+        
+        if (response.ok) {
+          // Show success message & reset form
+          successDiv.textContent = '✨ Message sent successfully! I will get back to you shortly (check your inbox). Thank you!';
+          successDiv.style.display = 'block';
+          contactForm.reset();
+          // Auto-scroll to success message
+          successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          // Optional: remove success message after 8 seconds
+          setTimeout(() => {
+            if (successDiv) successDiv.style.display = 'none';
+          }, 8000);
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (err) {
+        errorDiv.textContent = '⚠️ Oops! Something went wrong. Please try again or contact me directly via email.';
+        errorDiv.style.display = 'block';
+        console.error('Netlify form error:', err);
+      }
+    });
   }
 
-  // Optional: interactive console greeting
-  console.log("Hassene Othmani Portfolio — Data Science & Full Stack Engineering");
+  // Show success message on URL param (for non-JS fallback)
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('success') === 'true') {
+    if (successDiv) {
+      successDiv.textContent = '✔️ Your message has been delivered! You will receive a reply soon.';
+      successDiv.style.display = 'block';
+      // Remove query param from URL for cleaner look (optional)
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }
+  
+  console.log("✅ Netlify Forms active — any visitor message will be forwarded to hassene.othmani5400@gmail.com. Go to Netlify dashboard → Forms → Add email notification.");
 </script>
 </body>
 </html>
