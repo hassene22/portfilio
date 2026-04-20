@@ -707,33 +707,37 @@
   if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
+
       // Hide previous messages
       successDiv.style.display = 'none';
       errorDiv.style.display = 'none';
-      
+
+      // Netlify requires the body as URL-encoded, not multipart FormData
       const formData = new FormData(contactForm);
-      
+      const urlEncoded = new URLSearchParams(formData).toString();
+
       try {
         const response = await fetch('/', {
           method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: formData
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: urlEncoded
         });
-        
+
         if (response.ok) {
           // Show success message & reset form
-          successDiv.textContent = '✨ Message sent successfully! I will get back to you shortly (check your inbox). Thank you!';
+          successDiv.textContent = '✨ Message sent successfully! I will get back to you shortly. Thank you!';
           successDiv.style.display = 'block';
           contactForm.reset();
           // Auto-scroll to success message
           successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          // Optional: remove success message after 8 seconds
+          // Hide success message after 8 seconds
           setTimeout(() => {
             if (successDiv) successDiv.style.display = 'none';
           }, 8000);
         } else {
-          throw new Error('Submission failed');
+          throw new Error('Submission failed with status: ' + response.status);
         }
       } catch (err) {
         errorDiv.textContent = '⚠️ Oops! Something went wrong. Please try again or contact me directly via email.';
